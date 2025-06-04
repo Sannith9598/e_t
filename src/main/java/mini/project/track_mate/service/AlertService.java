@@ -13,6 +13,9 @@ public class AlertService {
     @Autowired
     private AlertRepository alertRepository;
 
+    public List<Alert> getAlertsByUserId(Long userId) {
+        return alertRepository.findByUserId(userId);
+    }
     public Alert saveAlert(Alert alert) {
         return alertRepository.save(alert);
     }

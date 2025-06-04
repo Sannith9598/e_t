@@ -12,6 +12,14 @@ public class ExpenseService {
     @Autowired
     private ExpenseRepository expenseRepository;
 
+    public List<Expense> getExpensesByUserId(Long userId) {
+    return expenseRepository.findByUserId(userId);
+    }
+
+    public List<Expense> getExpensesByUserIdAndCategoryId(Long userId, Long categoryId) {
+        return expenseRepository.findByUserIdAndCategoryId(userId, categoryId);
+    }
+
     public Expense saveExpense(Expense expense) {
         return expenseRepository.save(expense);
     }
@@ -22,6 +30,17 @@ public class ExpenseService {
 
     public List<Expense> getAllExpenses() {
         return expenseRepository.findAll();
+    }
+
+    public Expense updateExpense(Long id, Expense updatedExpense) {
+        Expense existingExpense = expenseRepository.findById(id).orElse(null);
+        if (existingExpense != null) {
+            existingExpense.setAmount(updatedExpense.getAmount());
+            existingExpense.setDate(updatedExpense.getDate());
+            existingExpense.setTitle(updatedExpense.getTitle());
+            return expenseRepository.save(existingExpense);
+        }
+        return null;
     }
 
     public void deleteExpense(Long id) {
