@@ -15,6 +15,15 @@ public class Income {
     private String source;
     private Double amount;
     private LocalDate date;
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
    public Long getId() {
        return id;

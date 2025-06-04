@@ -13,6 +13,14 @@ public class Alert {
     private Long id;
     private Double thresholdAmount;
     private String message;
+    private String role;
+    
+    public String getRole() {
+        return role;
+    }
+    public void setRole(String role) {
+        this.role = role;
+    }
     public Long getId() {
         return id;
     }
